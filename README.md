@@ -1,36 +1,21 @@
-# Welcome to Remix + Vite!
+# Clerk Styling Issue in Remix
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
+<img src="./clerk-styling-issue.png" alt="Login Page Without Styling" width="300px" />
 
-## Development
+## Steps to Reproduce
 
-Run the Vite dev server:
+1. Create a `.env` file with [Clerk environment variables](http://localhost:5173/login)
+2. Run the dev server:
+   ```bash
+   npm run dev
+   ```
+3. Go to [Login Page](http://localhost:5173/login)
+4. Click “Simulate Error” Link on Login Page
+5. Click “Go back to Login Page” Link on Error Page
+6. Styling on Clerk `<SignIn />` Component is now gone
 
-```shellscript
-npm run dev
-```
+## Potential Fix
 
-## Deployment
+This a common problem with Remix + Emotion. There's a documented workaround in [this Material UI example](https://github.com/mui/material-ui/blob/9b620c4918939ed9083883d2ce4c46e6b21b5214/examples/material-ui-remix-ts/app/root.tsx#L26-L40)
 
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
+My question is: how can I implement a similar workaround for the Clerk components? or is there a way to manually trigger a reload of the styles? How do I fix this?
